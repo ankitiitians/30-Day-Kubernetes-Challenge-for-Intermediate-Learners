@@ -1,0 +1,99 @@
+# Kubernetes Cluster Setup & Basics
+
+## **1. Introduction**
+Kubernetes is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications. This project focuses on setting up a Kubernetes cluster using **Minikube** for local development and exploring its core components.
+
+## **2. Objectives**
+- Install the required tools for Kubernetes setup.
+- Set up a Kubernetes cluster using Minikube.
+- Verify the cluster installation.
+- Explore key Kubernetes components such as nodes, pods, services, and deployments.
+- Access the Kubernetes dashboard for visualization.
+
+## **3. Prerequisites**
+Before proceeding with the setup, ensure that the following tools are installed:
+- **kubectl**: Kubernetes command-line tool
+- **Minikube**: A local Kubernetes environment
+- **Virtualization support** (Docker, VirtualBox, or Hyper-V)
+
+## **4. Installation & Setup**
+
+### **Step 1: Install Kubectl**
+Kubectl is the command-line tool used to interact with Kubernetes clusters.
+```sh
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/
+```
+Verify installation:
+```sh
+kubectl version --client
+```
+
+### **Step 2: Install Minikube**
+Minikube is used to run Kubernetes locally.
+```sh
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+```
+Verify installation:
+```sh
+minikube version
+```
+
+### **Step 3: Start the Kubernetes Cluster**
+Start the Minikube cluster with:
+```sh
+minikube start
+```
+Check Minikube status:
+```sh
+minikube status
+```
+
+### **Step 4: Verify the Cluster Installation**
+Check cluster details:
+```sh
+kubectl cluster-info
+```
+List all nodes in the cluster:
+```sh
+kubectl get nodes
+```
+Expected output:
+```
+NAME       STATUS   ROLES                  AGE     VERSION
+minikube   Ready    control-plane,master    2m      v1.25.0
+```
+
+## **5. Exploring Kubernetes Components**
+
+### **Step 5: List Kubernetes Resources**
+- List running pods:
+  ```sh
+  kubectl get pods --all-namespaces
+  ```
+- List available services:
+  ```sh
+  kubectl get services
+  ```
+- List deployments:
+  ```sh
+  kubectl get deployments
+  ```
+
+### **Step 6: Access Kubernetes Dashboard (Optional)**
+Enable the Kubernetes dashboard:
+```sh
+minikube dashboard
+```
+This will open a web-based interface for managing the cluster.
+
+## **6. Conclusion**
+By following this project, we successfully set up a Kubernetes cluster using Minikube, explored its core components, and accessed the Kubernetes dashboard for monitoring. This provides a strong foundation for deploying and managing containerized applications in Kubernetes.
+
+## **7. Future Scope**
+- Deploy a sample application on Kubernetes.
+- Configure networking and storage solutions.
+- Implement Kubernetes monitoring tools like Prometheus and Grafana.
+
